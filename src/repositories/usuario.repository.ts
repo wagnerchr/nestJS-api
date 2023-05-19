@@ -13,7 +13,6 @@ export class UsuarioRepository {
         return this.usuarios;
     }
 
-
     async findByEmail(email: string) {
         const user = this.usuarios.find(
             user => user.email === email
@@ -21,8 +20,7 @@ export class UsuarioRepository {
         return user !== undefined;
     }
 
-    // Buscar Usuário
-    async findById(id: string) {
+    public findById(id: string) {
         const usuario = this.usuarios.find(
             usuarioSalvo => usuarioSalvo.id === id  
         );
@@ -34,14 +32,14 @@ export class UsuarioRepository {
     }
 
     async update(id: string, dadosAtualizacao: Partial<UsuarioEntity>) {
-        
-        const usuario = this.findById(id);
-        
+        const usuario = this.findById(id); 
         Object.entries(dadosAtualizacao).forEach(([chave, valor]) => {
             if(chave === 'id') 
                 return;
-            usuario[chave] = valor;         
+            usuario[chave] = valor;
+
         });
+        console.log((await usuario).email)
         return usuario;
     }
 

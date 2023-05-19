@@ -33,14 +33,7 @@ export class UsuarioController {
     @Get('/:id')
     async get(@Param('id') id: string) {
         const usuario = this.usuarioRepository.findById(id);
-        usuario => new UsuarioDTO(
-            usuario.id,
-            usuario.nome,
-            usuario.idade,
-            usuario.email,
-            usuario.comSono,
-        );
-
+        console.log(usuario)
         return usuario;
     }
 
