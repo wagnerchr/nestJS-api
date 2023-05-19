@@ -13,6 +13,7 @@ export class UsuarioRepository {
         return this.usuarios;
     }
 
+
     async findByEmail(email: string) {
         const user = this.usuarios.find(
             user => user.email === email
@@ -21,7 +22,7 @@ export class UsuarioRepository {
     }
 
     // Buscar Usuário
-    private findById(id: string) {
+    async findById(id: string) {
         const usuario = this.usuarios.find(
             usuarioSalvo => usuarioSalvo.id === id  
         );
